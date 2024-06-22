@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Anonymous message</title>
+        <style> 
+            .pesan-container {
+                text-align: center;
+            }
+    
+            .sosmed-ku {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+        </style>
+    </head>
+    <body style="background-color: black;">
+    <div class="pesan-container">
+        <h3 style="font-family: Arial, Helvetica, sans-serif; color: white; display: flex; justify-content: center;">KIRIMI AKU PESAN ANOYMOUS</h3>
+            <div >
+                <p style="color: white;">Ketik nama lu disini ( nama lu ga bakal muncul )</p>
+                <p style="color: white;"><input type="text" id="nama"/></p>
+            </div>
+            <div>
+                <p style="color: white;">Apa pesanlu untuk jijel ?</p>
+                <textarea id="pesan"></textarea><button onclick="kirimPesan()">Kirim</button>
+            </div>
+            <h3 style="font-family: Arial, Helvetica, sans-serif; color: white; display: flex; justify-content: center;">PENUTUP</h3>
+            <p style="color: white;">Website pertama gw , maff kalo desainnya kurang<br/> karena bener bener <strong>baru belajar</strong> ngoding trs buat website begini<br/> doakan gue jadi orang yang jago ngoding yah
+            .<br/>Feel free buat ngasih gua kritik dan saran langsung aja klik sosmed gua dibawah yaaa</p>
+            <div>
+                <h3 style="color: white; font-family: Arial, Helvetica, sans-serif; justify-content: center; display: flex;">SOSMEDKU</h3>
+                <div class="sosmed-ku">
+                    <a href="https://wa.me/+6289614406368">
+                        <img src="wa.png" style="width: 80px;">
+                    </a>
+                    <a href="https://instagram.com/_azizle">
+                        <img src="instagram.png" style="height: 80px;">
+                    </a>
+                    <a href="https://www.facebook.com/azizle.azizle.5?mibextid=JRoKGi">
+                        <img src="fb.png" style="height: 80px;">
+                    </a>
+                </div>
+            </div>
+    </div>
+    <script>
+        function kirimPesan() {
+            const nama = document.getElementById('nama').value;
+            const pesan = document.getElementById('pesan').value;
+
+            if (nama && pesan) {
+                const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSdBGw7NgJn5Jl5mdA7JzkZr7wth8xggx3XPDJE6RzxtoyNpzw/formResponse";
+                const formData = new FormData();
+                formData.append(`entry.1322443814` ,nama);
+                formData.append(`entry.1410528308` , pesan);
+
+                fetch(googleFormUrl, {
+                    method: "POST",
+                    mode: "no-cors",
+                    body: formData
+                }).then(() => {
+                    alert('Pesan udh dikirim coy!');
+                }).catch((error) => {
+                    alert('Gagal mengirim pesan.');
+                });
+            } else {
+                alert('Jangan kosong kocak.');
+            }
+        }
+    </script>
+    </body>
+</html>
